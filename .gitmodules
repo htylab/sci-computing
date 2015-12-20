@@ -1,3 +1,6 @@
 [submodule "scipy-lecture-notes"]
 	path = scipy-lecture-notes
 	url = https://github.com/scipy-lectures/scipy-lecture-notes.git
+[submodule "dive-into-machine-learning"]
+	path = dive-into-machine-learning
+	url = https://github.com/htygithub/dive-into-machine-learning.git
