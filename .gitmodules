@@ -5,3 +5,6 @@
 [submodule "dive-into-machine-learning"]
 	path = dive-into-machine-learning
 	url = https://github.com/hangtwenty/dive-into-machine-learning.git
+[submodule "number_recognizer"]
+	path = number_recognizer
+	url = https://github.com/icoxfog417/number_recognizer.git
