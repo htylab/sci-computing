@@ -8,3 +8,6 @@
 [submodule "number_recognizer"]
 	path = number_recognizer
 	url = https://github.com/icoxfog417/number_recognizer.git
+[submodule "data-science-ipython-notebooks"]
+	path = data-science-ipython-notebooks
+	url = https://github.com/donnemartin/data-science-ipython-notebooks
