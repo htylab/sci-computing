@@ -1,0 +1,26 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="bs-callout bs-callout-primary">{{ HTML_text1 | safe}}</div>
+
+
+
+<div class="bs-callout bs-callout-primary"><h4>Interactive Plot</h4>{{ highchart | safe}} </div>
+
+
+
+
+<div class="bs-callout bs-callout-primary"><h4>Paper-style Plot</h4>{{ SVG | safe}} </div>
+
+
+<div class="bs-callout bs-callout-info">
+{{ HTML_text2 | safe}}
+<H4>Provided by Yi-Fu Tsai & Teng-Yi Huang</H4>
+    </div> 
+
+
+
+
+
+{% endblock %}
