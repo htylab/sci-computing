@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-   
+
     <script type="text/x-mathjax-config">
      MathJax.Hub.Config({tex2jax: {inlineMath: [['$$','$$'], ['\\(','\\)']]},SVG: { scale: 150 },  displayAlign: 'left'});
     </script>
@@ -38,6 +38,7 @@
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                     <li><a href="{% url 'T1LL_input' %}">T1 (Look-Locker)</a></li>
+                    <li><a href="{% url 'Boston_fit' %}">Boston</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
