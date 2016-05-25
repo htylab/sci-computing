@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            <form action="/T1LL_result/" method="post" class="form-horizontal">
+            <form action="{% url 'Boston_result' %}" method="post" class="form-horizontal">
                 {% csrf_token %}
                 <h4>Fill in features to predict the prices.</h4>
                 <hr />

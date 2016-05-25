@@ -6,7 +6,7 @@ def T1fitting(t_value, y_value):
         t_value: 時間變數
         y_value:信號強度
         以下為參數回傳
-        result_dict = {            
+        result_dict = {
             'A': A,
             'B': B,
             'T1_star':t,
@@ -19,13 +19,13 @@ def T1fitting(t_value, y_value):
             'error_status':0,
             'error_str':'OK!',
           }
-    
+
     """
     import numpy as np
 
     # setup initial value for test.
     if  not (t_value and y_value):
-        dict_T1fit_result = {            
+        dict_T1fit_result = {
             'error_status':1,
             'error_str':'No input data',}
         return dict_T1fit_result
@@ -33,7 +33,7 @@ def T1fitting(t_value, y_value):
     x =np.array( [float(xx) for xx in t_value.split()])
     y = np.array([float(xx) for xx in y_value.split()])
     if len(x) != len(y):
-        dict_T1fit_result = {            
+        dict_T1fit_result = {
         'error_status':2,
         'error_str':'TI series & SI series is not mach',}
         return dict_T1fit_result
@@ -45,11 +45,11 @@ def T1fitting(t_value, y_value):
     t_order= x.argsort()
     x=x[t_order]
     y=y[t_order]
-    
+
    #   使用不同的起始 T1 值去計算，再找出誤差最小的來使用
     result_list=['',]
     for index in range(len(guessnum)):
-    
+
         guess = [y.max(), 2 * y.max(), guessnum[index]]
         fit_result=T1fit_run(x,y,guess,abs_fit=1)
         errornum[index]  = fit_result['residue']
@@ -57,10 +57,10 @@ def T1fitting(t_value, y_value):
             result_list[0]=[fit_result,]
         else:
             result_list.append(fit_result)
-   
-    prerun_result=  result_list[np.argmin(errornum)] 
-    
-    #接下來去找出曲線翻轉  ，以前一次的結果當成初始值  
+
+    prerun_result=  result_list[np.argmin(errornum)]
+
+    #接下來去找出曲線翻轉  ，以前一次的結果當成初始值
     index_ylow=np.argmin(y)
     count=-1
     result_list=[0,0,0] # 準備一個大小為3的list
@@ -77,20 +77,20 @@ def T1fitting(t_value, y_value):
             flipped_y[:index+1]=-1*y[:index+1]
             guess = [prerun_result['A'], prerun_result['B'], prerun_result['T1_star']]
             fit_result=T1fit_run(x,flipped_y,guess,abs_fit=0)
-            errornum[count]  = fit_result['residue'] 
+            errornum[count]  = fit_result['residue']
         print errornum[count]
         index_temp[count]=index
         result_list[count]=fit_result
         obtained_result_list=result_list[np.argmin(errornum)]
 
-            
 
 
-        
-    
+
+
+
    # return  guessnum[np.argmin(errornum)]
     return obtained_result_list
-    
+
 def T1fit_run(x,y,guess,abs_fit):
     import numpy as np
     from scipy.optimize.minpack import curve_fit
@@ -108,11 +108,11 @@ def T1fit_run(x,y,guess,abs_fit):
     A, B, t = params
     #best_fit = lambda x: abs((A - (B * np.exp(-x / t))))
     smoothy = exp_f(smoothx, A, B, t)
-    T1 = t * (B / A - 1)            
+    T1 = t * (B / A - 1)
     yfitting = exp_f(x, A, B, t)
     #yfitting = abs(A - (B * np.exp(-x / t)))
     residue=np.sum(abs(yfitting - y));
-    result_dict = {            
+    result_dict = {
             'A': A,
             'B': B,
             'T1_star':t,
@@ -126,5 +126,3 @@ def T1fit_run(x,y,guess,abs_fit):
             'error_str':'OK!',
           }
     return result_dict
-
-
