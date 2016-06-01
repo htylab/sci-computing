@@ -30,44 +30,38 @@ def dynamic_svg(x,y,smoothx, smoothy,xAxis_label,yAxis_label,chart_title):
     finally:
         plt.clf()
 
-def dynamic_svg1(input_value,xAxis_label,yAxis_label,chart_title):
+def dynamic_svg1(input_value,y_value,xAxis_label,yAxis_label,chart_title):
     import StringIO
     import numpy, matplotlib.pyplot as plt
-    #import seaborn as sns
     from django.conf import settings
     import os
     from sklearn.externals import joblib
     from sklearn import datasets
     from sklearn.cross_validation import cross_val_predict
+    from sklearn.cross_validation import LeaveOneOut
 
     machine_file = os.path.join(settings.PROJECT_ROOT,"app", "machine.pkl")
     lr = joblib.load(machine_file)
     #lr = linear_model.LinearRegression()
     boston = datasets.load_boston()
     y = boston.target
-
+    predicted = cross_val_predict(lr, boston.data, y, cv=LeaveOneOut(506))
+    #y_value = lr.predict(input_value)
 
     try:
-        predicted = cross_val_predict(lr, boston.data, y, cv=10)
-        y_value = lr.predict(input_value)
 
         plt.figure(1)
 
         plt.scatter(y, predicted, s=30, marker='+',c= 'k',label='Original')
-        #plt.plot(smoothx, smoothy,c= 'k',label='Fitted data')
-        #plt.scatter(y, predicted)
         plt.plot(y_value,y_value,'k*',label='Predict',markersize=20)
         plt.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=4,label='Fitted data')
         plt.legend(loc='lower right')
         plt.xlabel(xAxis_label)
         plt.ylabel(yAxis_label)
-        #plt.xlim(xmin =-10,xmax= max(x)+100)
-        #plt.ylim(ymin =smoothy.min()-10)
         fig = plt.gcf()
         fig.set_size_inches(10,6)
 
         plt.gca().grid(True)
-
 
         rv = StringIO.StringIO()
         plt.savefig(rv, format="svg")
@@ -189,7 +183,7 @@ def highchart(x,y,smoothx, fitted_y,xAxis_label,yAxis_label,chart_title):
         """
     return JS
 
-def highchart1(input_value,xAxis_label,yAxis_label,chart_title):
+def highchart1(input_value,y_value,xAxis_label,yAxis_label,chart_title):
     import StringIO
     import numpy, matplotlib.pyplot as plt
     #import seaborn as sns
@@ -198,14 +192,15 @@ def highchart1(input_value,xAxis_label,yAxis_label,chart_title):
     from sklearn.externals import joblib
     from sklearn import datasets
     from sklearn.cross_validation import cross_val_predict
+    from sklearn.cross_validation import LeaveOneOut
 
     machine_file = os.path.join(settings.PROJECT_ROOT,"app", "machine.pkl")
     lr = joblib.load(machine_file)
     #lr = linear_model.LinearRegression()
     boston = datasets.load_boston()
     y = boston.target
-    predicted = cross_val_predict(lr, boston.data, y, cv=10)
-    y_value = lr.predict(input_value)
+    predicted = cross_val_predict(lr, boston.data, y, cv=LeaveOneOut(506))
+    #y_value = lr.predict(input_value)
 
     original_data = ''
     for index in range(len(y)):
@@ -292,19 +287,22 @@ def highchart1(input_value,xAxis_label,yAxis_label,chart_title):
                                 },
                                 tooltip: {
                                     headerFormat: '<b>{series.name}</b><br>',
-                                    pointFormat: '{point.x} ms, {point.y} '
+                                    pointFormat: '{point.x} , {point.y} '
                                 }
                             }
                         },
                         series: [{
                             name: 'Original',
                             color: 'rgba(223, 83, 83, 0.8)',
-
+                            marker : {
+                                            enabled : true,
+                                            radius : 3
+                                    },
                             data: [	""" +  original_data + """	]
 
                         }, {
                             name: 'Fitted Data',
-        			        lineWidth: 3,
+        			        lineWidth: 5,
         			         marker: {
                                             enabled: false
                                         },
@@ -313,6 +311,10 @@ def highchart1(input_value,xAxis_label,yAxis_label,chart_title):
                         },{
                             name: 'Predict',
                             color: 'rgba(0, 168, 0, 0.8)',
+                            marker : {
+                                            enabled : true,
+                                            radius : 8
+                                            },
 
                             data: [	""" +  Predict_data + """	]
 

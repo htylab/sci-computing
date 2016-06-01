@@ -11,62 +11,75 @@
                 <h4>Fill in features to predict the prices.</h4>
                 <hr />
                 <div class="form-group">
-                    <label for="crim_value" class="col-md-2 control-label">CRIM</label>
-                    <div class="col-md-10" >{{ form.crim_value }}</div>
+                    <label for="crim_value" class="col-md-2 control-label" style="font-size:150%">CRIM</label>
+                    <div class="col-md-10" ><i style="color:gray">per capita crime rate by town</i><br>
+                      {{ form.crim_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="zn_value" class="col-md-2 control-label">ZN</label>
-                    <div class="col-md-10">{{ form.zn_value }}</div>
+                    <label for="zn_value" class="col-md-2 control-label" style="font-size:150%">ZN</label>
+                    <div class="col-md-10"><i style="color:gray">proportion of residential land zoned for lots over 25,000 sq.ft.</i><br>
+                      {{ form.zn_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="indus_value" class="col-md-2 control-label">INDUS</label>
-                    <div class="col-md-10">{{ form.indus_value }}</div>
+                    <label for="indus_value" class="col-md-2 control-label" style="font-size:150%">INDUS</label>
+                    <div class="col-md-10"><i style="color:gray">proportion of non-retail business acres per town</i><br>
+                      {{ form.indus_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="chas_value" class="col-md-2 control-label">CHAS</label>
-                    <div class="col-md-10">{{ form.chas_value }}</div>
+                    <label for="chas_value" class="col-md-2 control-label" style="font-size:150%">CHAS</label>
+                    <div class="col-md-10"><i style="color:gray">Charles River dummy variable</i><br>
+                      {{ form.chas_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="nox_value" class="col-md-2 control-label">NOX</label>
-                    <div class="col-md-10">{{ form.nox_value }}</div>
+                    <label for="nox_value" class="col-md-2 control-label" style="font-size:150%">NOX</label>
+                    <div class="col-md-10"><i style="color:gray">nitric oxides concentration (parts per 10 million)</i><br>
+                      {{ form.nox_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="rm_value" class="col-md-2 control-label">RM</label>
-                    <div class="col-md-10">{{ form.rm_value }}</div>
+                    <label for="rm_value" class="col-md-2 control-label" style="font-size:150%">RM</label>
+                    <div class="col-md-10"><i style="color:gray">average number of rooms per dwelling</i><br>
+                      {{ form.rm_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="age_value" class="col-md-2 control-label">AGE</label>
-                    <div class="col-md-10">{{ form.age_value }}</div>
+                    <label for="age_value" class="col-md-2 control-label" style="font-size:150%">AGE</label>
+                    <div class="col-md-10"><i style="color:gray">proportion of owner-occupied units built prior to 1940</i><br>
+                      {{ form.age_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="dis_value" class="col-md-2 control-label">DIS</label>
-                    <div class="col-md-10">{{ form.dis_value }}</div>
+                    <label for="dis_value" class="col-md-2 control-label" style="font-size:150%">DIS</label>
+                    <div class="col-md-10"><i style="color:gray">weighted distances to five Boston employment centres</i><br>
+                      {{ form.dis_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="rad_value" class="col-md-2 control-label">RAD</label>
-                    <div class="col-md-10">{{ form.rad_value }}</div>
+                    <label for="rad_value" class="col-md-2 control-label" style="font-size:150%">RAD</label>
+                    <div class="col-md-10"><i style="color:gray">index of accessibility to radial highways</i><br>
+                      {{ form.rad_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="tax_value" class="col-md-2 control-label">TAX</label>
-                    <div class="col-md-10">{{ form.tax_value }}</div>
+                    <label for="tax_value" class="col-md-2 control-label" style="font-size:150%">TAX</label>
+                    <div class="col-md-10"><i style="color:gray">full-value property-tax rate per $10,000</i><br>
+                      {{ form.tax_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="ptratio_value" class="col-md-2 control-label">PTRATIO</label>
-                    <div class="col-md-10">{{ form.ptratio_value }}</div>
+                    <label for="ptratio_value" class="col-md-2 control-label" style="font-size:150%">PTRATIO</label>
+                    <div class="col-md-10"><i style="color:gray">pupil-teacher ratio by town</i><br>
+                      {{ form.ptratio_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="b_value" class="col-md-2 control-label">B</label>
-                    <div class="col-md-10">{{ form.b_value }}</div>
+                    <label for="b_value" class="col-md-2 control-label" style="font-size:150%">B</label>
+                    <div class="col-md-10"><i style="color:gray">1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town</i><br>
+                      {{ form.b_value }}</div>
                 </div>
                 <div class="form-group">
-                    <label for="lstat_value" class="col-md-2 control-label">LSTAT</label>
-                    <div class="col-md-10">{{ form.lstat_value }}</div>
+                    <label for="lstat_value" class="col-md-2 control-label" style="font-size:150%">LSTAT</label>
+                    <div class="col-md-10"><i style="color:gray">% lower status of the population</i><br>
+                      {{ form.lstat_value }}</div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Submit" class="btn btn-default" />
+                        <input type="submit" value="Submit" class="btn btn-default"  style="font-size:125%"/>
                     </div>
                 </div>
                 {% if form.errors %}
@@ -91,10 +104,10 @@ Simply copy the following test data into the input boxes and click submit.
 
 Test data:
 <p>
-['CRIM' 'ZN' 'INDUS' 'CHAS' 'NOX' 'RM' 'AGE' 'DIS' 'RAD' 'TAX' 'PTRATIO' 'B' 'LSTAT']
+feature_names = [CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT]
 
 <p>
-[0.00632, 18, 2.31 ,0 ,0.538 ,6.575, 65.2, 4.09, 1, 296, 15.3, 396.9, 4.98]
+data = [0.00632, 18, 2.31 ,0 ,0.538 ,6.575, 65.2, 4.09, 1, 296, 15.3, 396.9, 4.98]
 <p>
 
 
