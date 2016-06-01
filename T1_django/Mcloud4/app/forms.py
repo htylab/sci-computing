@@ -24,8 +24,8 @@ class BootstrapCurveFittingForm(forms.Form):
     y_value = forms.CharField(label='y_value',max_length=254,widget=forms.TextInput(attrs={'size':'100'}))
 
     crim_value = forms.CharField(label='crim_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':'per capita crime rate by town'}))
-    zn_value = forms.CharField(label='zn_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':' '}))
-    indus_value = forms.CharField(label='indus_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':' '}))
+    zn_value = forms.CharField(label='zn_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':'0%~100%'}))
+    indus_value = forms.CharField(label='indus_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':'%'}))
 
     CHOICES=[('1','1 (if tract bounds river)'),('0','0 (otherwise)')]
     chas_value = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
@@ -33,7 +33,7 @@ class BootstrapCurveFittingForm(forms.Form):
 
     nox_value = forms.CharField(label='nox_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':'nitric oxides concentration'}))
     rm_value = forms.CharField(label='rm_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':'average number of rooms per dwelling'}))
-    age_value = forms.CharField(label='age_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':' '}))
+    age_value = forms.CharField(label='age_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':'%'}))
     dis_value = forms.CharField(label='dis_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':' '}))
     rad_value = forms.CharField(label='rad_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':' '}))
     tax_value = forms.CharField(label='tax_value',max_length=254,widget=forms.TextInput(attrs={'size':'100','placeholder':' '}))

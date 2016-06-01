@@ -188,3 +188,144 @@ def highchart(x,y,smoothx, fitted_y,xAxis_label,yAxis_label,chart_title):
 
         """
     return JS
+
+def highchart1(input_value,xAxis_label,yAxis_label,chart_title):
+    import StringIO
+    import numpy, matplotlib.pyplot as plt
+    #import seaborn as sns
+    from django.conf import settings
+    import os
+    from sklearn.externals import joblib
+    from sklearn import datasets
+    from sklearn.cross_validation import cross_val_predict
+
+    machine_file = os.path.join(settings.PROJECT_ROOT,"app", "machine.pkl")
+    lr = joblib.load(machine_file)
+    #lr = linear_model.LinearRegression()
+    boston = datasets.load_boston()
+    y = boston.target
+    predicted = cross_val_predict(lr, boston.data, y, cv=10)
+    y_value = lr.predict(input_value)
+
+    original_data = ''
+    for index in range(len(y)):
+            if (index < (len(y) - 1)):
+                formattedline = '				[%10.3f , %10.3f ],' % (y[index], predicted[index])
+            else:
+                formattedline = '				[%10.3f , %10.3f ]' % (y[index], predicted[index])
+            original_data +=formattedline
+
+    fitted_data = ''
+    for index in range(len([y.min(), y.max()])):
+            if (index < (len([y.min(), y.max()]) - 1)):
+                formattedline = '				[%10.3f , %10.3f ],' % ([y.min(), y.max()][index], [y.min(), y.max()][index])
+            else:
+                formattedline = '				[%10.3f , %10.3f ]' % ([y.min(), y.max()][index], [y.min(), y.max()][index])
+            fitted_data += formattedline
+
+    Predict_data = ''
+    for index in range(len(y_value)):
+            if (index < (len(y_value) - 1)):
+                formattedline = '				[%10.3f , %10.3f ],' % (y_value[index], y_value[index])
+            else:
+                formattedline = '				[%10.3f , %10.3f ]' % (y_value[index], y_value[index])
+            Predict_data +=formattedline
+
+    JS="""
+                <script type='text/javascript'>
+                $(function () {
+                    $('#container2').highcharts({
+
+                            credits: {
+                    text: '',
+                    href: 'http://cloud.mrilab.org'
+                },
+                        chart: {
+                            type: 'scatter',
+                            zoomType: 'xy'
+                        },
+                        title: {
+                            text: '""" +  chart_title + """'
+                        },
+
+                        xAxis: {
+                            title: {
+                                enabled: true,
+                                text: '""" +  xAxis_label + """'
+                            },
+                            startOnTick: true,
+                            endOnTick: true,
+                            showLastLabel: true
+                        },
+                        yAxis: {
+                            title: {
+                                text: '""" +  yAxis_label + """'
+                            }
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'left',
+                            verticalAlign: 'top',
+                            x: 100,
+                            y: 70,
+                            floating: true,
+                            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                            borderWidth: 1
+                        },
+                        plotOptions: {
+                            scatter: {
+                                marker: {
+                                    radius: 5,
+                                    states: {
+                                        hover: {
+                                            enabled: true,
+                                            lineColor: 'rgb(100,100,100)'
+                                        }
+                                    }
+                                },
+                                states: {
+                                    hover: {
+                                        marker: {
+                                            enabled: false
+                                        }
+                                    }
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{series.name}</b><br>',
+                                    pointFormat: '{point.x} ms, {point.y} '
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Original',
+                            color: 'rgba(223, 83, 83, 0.8)',
+
+                            data: [	""" +  original_data + """	]
+
+                        }, {
+                            name: 'Fitted Data',
+        			        lineWidth: 3,
+        			         marker: {
+                                            enabled: false
+                                        },
+                            color: 'rgba(119, 152, 191, 1)',
+                            data: [	""" +  fitted_data + """	]
+                        },{
+                            name: 'Predict',
+                            color: 'rgba(0, 168, 0, 0.8)',
+
+                            data: [	""" +  Predict_data + """	]
+
+                        }]
+                    });
+                });
+
+
+        </script>
+
+
+        <div id='container2' style='width: 80%; height: 480px; margin: 0 auto;'></div>
+
+
+        """
+    return JS

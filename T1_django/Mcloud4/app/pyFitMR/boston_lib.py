@@ -25,21 +25,24 @@ def Bostonfit(crim_value,zn_value,indus_value,chas_value,
 #========================================================================
 
     HTML_text1 =''
+    if demo_data:
+        HTML_text1 += "<p><p><div class='alert alert-warning' role='alert'>No input data, using demo data set!</div>"
 
     HTML_text1 +=' <h4>Fitting Model for Boston Experiment</h4>'
-    HTML_text1 +="<p>feature_names = ['CRIM' 'ZN' 'INDUS' 'CHAS' 'NOX' 'RM' 'AGE' 'DIS' 'RAD' 'TAX' 'PTRATIO' 'B' 'LSTAT']"
     HTML_text1 +="<p>data = %s" % input_value
-    HTML_text1 +="<p>target = %s" % y_value
+    HTML_text1 +="<H4>Calculated target = %s</H4><p>" % y_value
 #========================================================================
-    HTML_text2 = "<H4>Provided by Yun-Wen Wang & Teng-Yi Huang</H4>"
+    HTML_text2 ="<p>feature_names = [CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT]"
+    HTML_text2 += "<H4>Provided by Yun-Wen Wang & Teng-Yi Huang</H4>"
 
     import Plotting_lib
-    chart_title = 'Fitting Model for Boston Experiment'
+    chart_title = 'Fitting model for Boston experiment'
     xAxis_label = 'Measured'
     yAxis_label = 'Predicted'
     result_dict = {
             'HTML_text1': HTML_text1,
             'HTML_text2': HTML_text2,
+            'plot1':Plotting_lib.highchart1(input_value,xAxis_label,yAxis_label,chart_title),
             'plot2':Plotting_lib.dynamic_svg1(input_value,xAxis_label,yAxis_label,chart_title),
                }
     return result_dict
