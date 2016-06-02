@@ -315,7 +315,6 @@ def highchart1(input_value,y_value,xAxis_label,yAxis_label,chart_title):
                                             enabled : true,
                                             radius : 8
                                             },
-
                             data: [	""" +  Predict_data + """	]
 
                         }]
