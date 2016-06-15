@@ -36,7 +36,8 @@ urlpatterns = patterns('',
         name='logout'),
     url(r'^T1LL/$', 'app.views.T1LL_input', name='T1LL_input'),
     url(r'^T1LL_result/$', 'app.views.T1LL_result', name='T1LL_result'),
-  
+    url(r'^Boston_fit/$', 'app.views.Boston_fit', name='Boston_fit'),
+    url(r'^Boston_result/$', 'app.views.Boston_result', name='Boston_result'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
