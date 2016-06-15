@@ -1,0 +1,24 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+
+<div>
+
+
+<h4>
+Interactive
+</h4> {{the_div|safe}}   </div>
+
+
+{{the_script|safe}}
+
+<script>
+$(document).ready(function(){
+    $("#thisdiv").removeClass("container");
+    });
+</script>
+
+{% endblock %}
