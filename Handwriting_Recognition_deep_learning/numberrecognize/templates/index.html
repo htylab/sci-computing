@@ -1,0 +1,48 @@
+
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>number-recognize</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+    var csrf =  '{{ csrf_token }}'
+    </script>
+    {% load staticfiles%}
+    <link rel="stylesheet" href="{% static "css/progress_bar.css" %}">
+    <link rel="stylesheet" href="{% static "css/button.css" %}">
+    <link rel="stylesheet" href="{% static "css/background.css" %}">
+
+  </head>
+<body class="bg">
+
+<center>
+<p><font size="20" color="blue">Number Recognize</font></p>
+
+<br>
+<br>
+
+<canvas id="myCanvas" width="170" height="170" style="border:#000 1px solid;"></canvas>
+
+<br>
+<br>
+<br>
+<button class="button" onclick="clearPad()">clear</button>
+<br>
+<br>
+<button  class="button2" onclick="gray_level_piex_acces()">submit</button>
+<br>
+<br>
+<label id="number_result">result</label>
+<div  id="progress_bar" class="loader_freeze">
+</div>
+<p><b>This application powerd by Yu Nian ou</b></p>
+</center>
+
+<canvas id="myCanvas2" width="64" height="64" style="display:none"></canvas>
+
+<script type="text/javascript" src= "{% static "js/index.js" %} " ></script>
+
+
+
+</body>

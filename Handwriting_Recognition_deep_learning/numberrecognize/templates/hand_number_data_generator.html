@@ -1,0 +1,70 @@
+
+<!-- author YU_NIAN_OU 2017_03_04-->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>手寫資料產生器</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% load staticfiles%}
+    <link rel="stylesheet" href="{% static "css/progress_bar.css" %}">
+    <link rel="stylesheet" href="{% static "css/button.css" %}">
+    <link rel="stylesheet" href="{% static "css/background.css" %}">
+  </head>
+<body class="bg">
+<h1>此網頁目的是將電腦手寫出來的字轉成excel表格並download下來</h1>
+<br>
+Step1:輸入編寫人的學號
+<br>
+Step2:請跟者指示寫數字
+<br>
+Step3:如果要保存這次的字請按將圖片存入excel表格，如果不想存下這次寫的字請按clear
+<br>
+Step4:寫完全部的資料後按Download excel表格，即可下載
+<br>
+PS:存下的資料格式，第一行為數字標記值，後面為64*64圖片的一維陣列，陣列內為255的地方，就是畫筆有畫到的地方
+<center>
+<label for="inputname">請輸編輯者學號</label>
+<input align="right" type="text" value="xxxxx" id="user_name_input">
+<br>
+<br>
+<font size="20" color="#FF0000">
+<label for="target" id="label_hint" >請寫數字0</label>
+</font>
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+<canvas id="myCanvas" width="170" height="170" style="border:#000 1px solid;"></canvas>
+
+<br>
+<br>
+<br>
+<button type="button" class="button2" onclick="clearPad()">clear</button>
+<br>
+<br>
+<button type="button"class="button2" onclick="gray_level_piex_acces()">將圖片存入excel表格</button>
+<br>
+<br>
+
+
+<br>
+<button class="button2"onclick="download_csv()">Download excel表格</button>
+<br>
+<br>
+<label for="item">目前各個數字存入的個數:</label>
+<label for="item2"id="item_counter">全為0:</label>
+<br>
+<p><b>This application powerd by Yu Nian ou</b></p>
+</center>
+
+<canvas id="myCanvas2" width="64" height="64" style="display:none"></canvas>
+
+
+
+<script type="text/javascript" src= "{% static "js/hand_number_data_generator.js" %} " ></script>
+
+
+
+
+</body></html>
