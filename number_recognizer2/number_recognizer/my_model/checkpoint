@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/eeb02/PycharmProjects/number_recognizer/number_recognizer/my_model/my_model.ckpt"
+all_model_checkpoint_paths: "/home/eeb02/PycharmProjects/number_recognizer/number_recognizer/my_model/my_model.ckpt"
